@@ -6,7 +6,8 @@
 
 using namespace std;
 
-const string temp_sensor = "/sys/bus/w1/devices/28-000004647259/w1_slave";
+//const string temp_sensor = "/sys/bus/w1/devices/28-000004647259/w1_slave";
+const string temp_sensor_rpi2 = "/sys/bus/w1/devices/28-000004647259/w1_slave";
 
 std::vector<std::string> get_lines_from_file(const std::string& file)
 {
@@ -26,7 +27,7 @@ std::vector<std::string> get_lines_from_file(const std::string& file)
 
 float read_temp()
 {
-	auto lines = get_lines_from_file(temp_sensor);
+	auto lines = get_lines_from_file(temp_sensor_rpi2);
 	
 	auto pos = lines[1].find("t=");
 
@@ -37,7 +38,7 @@ float read_temp()
 
 int main()
 {
-	cout << "hello from temp1!\n";
+	cout << "Witam w programie do pomiaru temperatury!\n";
 
 	for (int i = 0; i < 10; ++i)
 	{
